@@ -19,6 +19,7 @@ public class UserAccount {
 	public String toString() {
 		return "UserAccount [username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
+	
 	public String getUsername() {
 		return username;
 	}

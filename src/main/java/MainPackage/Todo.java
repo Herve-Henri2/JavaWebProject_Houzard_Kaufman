@@ -5,8 +5,6 @@ public class Todo {
 	private int id;
 	private String description;
 	
-	
-	
 	public Todo(int id, String description) {
 		super();
 		this.id = id;
