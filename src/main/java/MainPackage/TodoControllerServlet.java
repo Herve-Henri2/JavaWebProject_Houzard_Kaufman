@@ -15,9 +15,7 @@ import javax.sql.DataSource;
 import MainPackage.Todo;
 import MainPackage.TodoDBUtil;
 
-/**
- * Servlet implementation class TodoControllerServlet
- */
+
 @WebServlet("/TodoControllerServlet")
 public class TodoControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,6 +48,7 @@ public class TodoControllerServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
+		System.out.println("init successful");
 		todoDBUtil = new TodoDBUtil(dataSource);
 	}
 

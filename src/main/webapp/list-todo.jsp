@@ -20,8 +20,8 @@
 </tr>
 <c:forEach var="tempTodo" items="${TODO_LIST }" >
 <tr>
-<td> ${tempTodo.getId}</td>
-<td> ${tempTodo.getDescription}</td>
+<td> ${tempTodo.getId()}</td>
+<td> ${tempTodo.getDescription()}</td>
 
 </c:forEach>
 </table>

@@ -14,9 +14,10 @@ drop table if exists todo;
 create table todo
 (
 id integer primary key,
-role varchar(600)
+description varchar(600)
 );
-
+SET @@global.time_zone = '+00:00';
+SET @@session.time_zone = '+00:00';
 insert into user value('Antoine', '123','student');
 insert into user value('Marc', '321','teacher');
 select * from user;
@@ -24,5 +25,11 @@ select * from user;
 insert into todo value(1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 insert into todo value(2, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
 select * from todo;
+
+
+
+
+
+
 
 

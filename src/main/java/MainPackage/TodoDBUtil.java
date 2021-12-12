@@ -38,7 +38,12 @@ public class TodoDBUtil
 
 			Todo tempTodo= new Todo(id,description);
 			todos.add(tempTodo);
+			
+			
+			System.out.println(tempTodo.toString());
+			System.out.println("data fetched");
 			}
+		
 		return todos;
 		} 
 		finally
