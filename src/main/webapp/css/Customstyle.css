@@ -1,0 +1,37 @@
+body{
+  background-color: #80A5C6;
+  padding:0px;
+  color: #000000;
+}
+
+.red_band{
+	display: flex;
+	background-color: #F41F69;
+	padding:20px;
+}
+
+#wrapper {
+  font-family:serif;
+}
+ input {
+  display:block;
+}
+
+.maintext {
+  margin: 20px 50px 20px 50px;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+}
+
+.container1{
+  margin: 10px 50px 10px 50px;
+}
+
+.container2{
+  margin: 10px 50px 0 50px;
+}
+
+.container3{
+  margin: 10px 50px 0 50px;
+}
+

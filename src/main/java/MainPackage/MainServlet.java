@@ -24,7 +24,7 @@ public class MainServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/plain");
 		//out.println("This is the Login Screen");
-		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request,
+		request.getRequestDispatcher("/login.jsp").forward(request,
 				response);
 	}
 
