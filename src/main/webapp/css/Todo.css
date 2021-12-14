@@ -18,15 +18,15 @@ body{
 }
 
 table {   
-	border-collapse:collapse;
 	border-bottom:1px solid gray;
+	border-left:1px solid gray; border-right:1px solid gray;
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
 	width:72%;
 }
 
 th {
 	border-bottom:1px solid gray;
-	background:none repeat scroll 0 0 #0775d3;
+	background-color: #F41F69;
 	padding:10px;
 	color: #FFFFFF;
 }
