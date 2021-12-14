@@ -39,8 +39,8 @@ public class MainServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username=req.getParameter("username");
-		String password=req.getParameter("password");
+		String username=req.getParameter("Username");
+		String password=req.getParameter("Password");
 		try {
 			boolean valid=userAccountDBUtil.ValidCredentials(username, password);
 			if(valid==true) {

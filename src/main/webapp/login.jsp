@@ -18,14 +18,14 @@
 		<form action="http://localhost:5553/WebProject/MainServlet" method="post">
 			<div class="container1">
 				<label for="username">Username</label> 
-				<input id="username" name="username" type="text">
+				<input id="username" name="Username" type="text">
 			</div>
 			<div class="container2">
 				<label for="password">Password</label> 
-				<input id="password" name="password" type="password">
+				<input id="password" name="Password" type="password">
 			</div>
 			<div class="container3">
-				<button type="submit" id="confirm">Confirm</button>
+				<input type="submit" id="confirm" value="Confirm"></input>
 			</div>
 		</form>
 	</div>
