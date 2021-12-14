@@ -25,6 +25,14 @@
 				</c:forEach>
 			</table>
 		</div>
+		
+	    <form action="http://localhost:9003/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
+	        <input name="deleteNumber" size="12" placeholder="Todo number">
+	         <input type="submit" value="Supprimer" style = "position:relative; left:4px;">
+	    </form>
+    
+
+    
 	</div>
 </body>
 </html>

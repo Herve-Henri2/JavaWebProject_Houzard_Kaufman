@@ -51,7 +51,27 @@ public class TodoDBUtil
 			close(myConn,myStmt,myRs);
 			}
 		}
-		private void close(Connection myConn, Statement myStmt, ResultSet myRs) 
+	
+	public void deleteTodos(int id) throws Exception 
+	{
+		Connection myConn=null;
+		Statement myStmt = null;
+		//ResultSet myRs= null;
+		try 
+		{
+		myConn = dataSource.getConnection();
+		myStmt= myConn.createStatement();
+		String sql= "delete from todo where id = "+ id+";";
+		int myRs = myStmt.executeUpdate(sql);
+		System.out.println("data deleted");
+		} 
+		finally
+			{
+			close2(myConn,myStmt);
+			}
+		}
+	
+	private void close(Connection myConn, Statement myStmt, ResultSet myRs) 
 		{
 			try
 			{
@@ -68,6 +88,23 @@ public class TodoDBUtil
 			}
 		}
 	
+	
+	
+	
+	private void close2(Connection myConn, Statement myStmt) 
+	{
+		try
+		{
+			if(myStmt!=null)
+			myStmt.close();
+			if(myConn!=null)
+			myConn.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	
 }

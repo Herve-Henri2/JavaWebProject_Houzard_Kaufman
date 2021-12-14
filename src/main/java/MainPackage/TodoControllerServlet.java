@@ -1,6 +1,7 @@
 package MainPackage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -35,6 +36,24 @@ public class TodoControllerServlet extends HttpServlet {
 		
 	}
 	
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    int number = Integer.parseInt(request.getParameter("deleteNumber"));
+	    try {
+
+	    
+			todoDBUtil.deleteTodos(number);
+    		response.setIntHeader("Refresh", 1);//To refresh the page
+		      
+
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    //response.sendRedirect("");
+	}
 	
 	private void listTodos(HttpServletRequest request, HttpServletResponse response)throws Exception
 	{
