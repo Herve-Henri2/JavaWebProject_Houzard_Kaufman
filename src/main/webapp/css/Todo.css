@@ -18,24 +18,38 @@ body{
 }
 
 table {   
-	border-bottom:1px solid gray;
-	border-left:1px solid gray; border-right:1px solid gray;
+	border:1px solid gray;
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
 	width:72%;
+	margin: auto;
 }
 
 th {
-	border-bottom:1px solid gray;
+	border:1px solid gray;
 	background-color: #F41F69;
 	padding:10px;
 	color: #FFFFFF;
 }
 
 tr {
-	border-top:1px solid gray;
+	border:1px solid gray;
 	text-align:center;	
 }
 
+td{
+	border:1px solid gray;
+}
+
 #container{
-	margin: 50px 50px 200px 300px;
+	margin: auto;
+	padding: 30px;
+	text-align:center;
+}
+
+#content{
+	margin: auto;
+}
+
+#logout{
+	margin: 20px 20px 20px 20px;
 }

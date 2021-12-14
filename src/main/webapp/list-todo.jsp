@@ -24,6 +24,7 @@
 						<td>${tempTodo.getDescription()}</td>
 				</c:forEach>
 			</table>
+			<button id="logout" type="button">Logout</button>
 		</div>
 		
 	    <form action="http://localhost:9003/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
