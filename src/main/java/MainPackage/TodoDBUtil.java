@@ -71,6 +71,30 @@ public class TodoDBUtil
 			}
 		}
 	
+	public void ResetIds() throws Exception{
+		Connection myConn=null;
+		Statement myStmt = null; Statement myStmt2=null;
+		ResultSet myRs=null;
+		try {
+			int id=0;
+			myConn = dataSource.getConnection();
+			myStmt= myConn.createStatement();
+			myStmt2=myConn.createStatement();
+			String sql= "select * from todo;";
+			myRs = myStmt.executeQuery(sql);
+			while(myRs.next()) {
+				id++;
+				int currentid=myRs.getInt("id");
+				sql="UPDATE todo SET id="+id+" WHERE id="+currentid+";";
+				int newRS=myStmt2.executeUpdate(sql);
+			}
+			System.out.println("Ids refreshed");		
+		}
+		finally {
+			close2(myConn,myStmt);
+		}
+	}
+	
 	private void close(Connection myConn, Statement myStmt, ResultSet myRs) 
 		{
 			try

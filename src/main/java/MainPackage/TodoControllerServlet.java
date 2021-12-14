@@ -44,6 +44,7 @@ public class TodoControllerServlet extends HttpServlet {
 
 	    
 			todoDBUtil.deleteTodos(number);
+			todoDBUtil.ResetIds();
     		response.setIntHeader("Refresh", 1);//To refresh the page
 		      
 
