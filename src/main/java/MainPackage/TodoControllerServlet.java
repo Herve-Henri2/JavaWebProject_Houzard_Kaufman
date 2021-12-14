@@ -41,13 +41,11 @@ public class TodoControllerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    int number = Integer.parseInt(request.getParameter("deleteNumber"));
 	    try {
-
 	    
 			todoDBUtil.deleteTodos(number);
 			todoDBUtil.ResetIds();
     		response.setIntHeader("Refresh", 1);//To refresh the page
 		      
-
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

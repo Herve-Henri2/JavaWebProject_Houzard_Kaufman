@@ -15,21 +15,19 @@
 	    style="margin-left:700px">
 	</div>
     <div id="wrapper">
-    <div class="container1">
-        <label for="username">
-        Username
-        </label>
-        <input id="username" type="text">
-    </div>
-    <div class="container2">
-        <label for="password">
-        Password
-        </label>
-        <input id="password" type="password">
-    </div>
-    <div class="container3">
-        <button type="button" id="confirm">Confirm</button>
-    </div>
-  </div>
+		<form action="http://localhost:5553/WebProject/MainServlet" method="post">
+			<div class="container1">
+				<label for="username">Username</label> 
+				<input id="username" name="username" type="text">
+			</div>
+			<div class="container2">
+				<label for="password">Password</label> 
+				<input id="password" name="password" type="password">
+			</div>
+			<div class="container3">
+				<button type="submit" id="confirm">Confirm</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

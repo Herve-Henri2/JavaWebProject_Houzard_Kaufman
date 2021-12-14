@@ -27,11 +27,10 @@
 			<form action="http://localhost:5553/WebProject/MainServlet" method="get">
 				<button  id="logout" type="submit">Logout</button>
 			</form>
-		</div>
-		
+		</div>	
 	    <form action="http://localhost:5553/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
 	        <input name="deleteNumber" size="12" placeholder="Todo number">
-	         <input type="submit" value="Delete" style = "position:relative; left:4px;">
+	        <input type="submit" value="Delete" style = "position:relative; left:4px;">
 	    </form>    
 	</div>
 </body>
