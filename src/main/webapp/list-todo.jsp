@@ -2,14 +2,14 @@
 <html>
 <head>
 <title>Web Student Tracker</title>
-<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/Todo.css">
 </head>
 <body>
 	<!-- ${TODO_LIST}-->
-	<div id="wrapper">
-		<div id="header">
-			<h2>ESILV Engineer School</h2>
-		</div>
+	<div class="red_band">
+	    <h4 class="maintext">List of things to do</h4>
+	    <img src="esilv_250.jpg" alt="Esilv_logo" width="80" height="80"
+	    style="margin-left:840px">
 	</div>
 	<div id="container">
 		<div id="content">

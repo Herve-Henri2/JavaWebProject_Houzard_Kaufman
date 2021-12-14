@@ -1,7 +1,6 @@
 body{
   background-color: #FFFFFF;
   padding:0px;
-  color: #000000;
 }
 
 .red_band{
@@ -21,6 +20,7 @@ body{
   margin: 20px 50px 20px 50px;
   font-family:Verdana, Arial, Helvetica, sans-serif;
   white-space: nowrap;
+  color: #FFFFFF;
 }
 
 .container1{
