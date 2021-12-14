@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Login Screen</title>
 <meta name="author" content="Herve-Henri"/>
-<link type="text/css" rel="stylesheet" href="css/Customstyle.css">
+<link type="text/css" rel="stylesheet" href="css/Login.css">
 </head>
 <body>
 	<div class="red_band">
