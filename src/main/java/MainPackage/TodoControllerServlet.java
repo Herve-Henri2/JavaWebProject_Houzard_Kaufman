@@ -39,14 +39,30 @@ public class TodoControllerServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    int number = Integer.parseInt(request.getParameter("deleteNumber"));
-	    try {
-	    
-			todoDBUtil.deleteTodos(number);
-			todoDBUtil.ResetIds();
-    		response.setIntHeader("Refresh", 1);//To refresh the page
-		      
 
+	    try {
+            String action = request.getParameter("purpose");
+            if(action.equals("add"))
+            {
+            	String text = request.getParameter("newTodoText");
+            	
+            	todoDBUtil.addTodos(changeString(text));
+            	todoDBUtil.ResetIds();
+        		response.setIntHeader("Refresh", 1);
+            }
+            if(action.equals("delete"))
+            {
+            	int number = Integer.parseInt(request.getParameter("deleteNumber"));
+            	todoDBUtil.deleteTodos(number);
+    			todoDBUtil.ResetIds();
+    			response.setIntHeader("Refresh", 1);
+            }
+            else 
+            {
+            	response.setIntHeader("Refresh", 1);//To refresh the page
+            }
+            
+            
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,6 +76,13 @@ public class TodoControllerServlet extends HttpServlet {
 		request.setAttribute("TODO_LIST", todos);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/list-todo.jsp");
 		dispatcher.forward(request, response);
+	}
+	
+	private String changeString(String str)
+	{
+		String result = str.replace("'", "\\'");
+		System.out.println("string replaced : " + result);
+		return result;
 	}
 
 
