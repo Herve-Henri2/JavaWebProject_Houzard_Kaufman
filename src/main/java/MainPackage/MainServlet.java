@@ -3,8 +3,10 @@ package MainPackage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,18 +45,23 @@ public class MainServlet extends HttpServlet {
 		String password=req.getParameter("Password");
 		try {
 			boolean valid=userAccountDBUtil.ValidCredentials(username, password);
+			//System.out.println(valid);
 			if(valid==true) {
+				System.out.println("true");
 				String role=userAccountDBUtil.GetRole(username, password);
-				if(role=="student") {
+				//System.out.println(role);
+				if(role.equals("student")) {
 					//goto Student's page
-					req.getRequestDispatcher("/list-todo.jsp").forward(req,
-							resp);
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet"); //works
 				}
-				else if(role=="teacher") {
+				else if(role.equals("teacher")) {
 					//goto Teacher's page
-					req.getRequestDispatcher("/list-todo.jsp").forward(req,
-							resp);
+					//System.out.println("Teacher page");
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet");
 				}
+			}
+			else {
+				System.out.println("Nothing for now");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,15 +70,13 @@ public class MainServlet extends HttpServlet {
 		
 	}
 
-
-
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		//System.out.println("init successful");
 		userAccountDBUtil = new UserAccountDBUtil(dataSource);
+		todoDBUtil = new TodoDBUtil(dataSource);
 	}
-	
 	
 
 }

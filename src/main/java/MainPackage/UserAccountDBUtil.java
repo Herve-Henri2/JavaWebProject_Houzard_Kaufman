@@ -27,9 +27,9 @@ public class UserAccountDBUtil {
 			String sql= "select * from user;";
 			myRs = myStmt.executeQuery(sql);
 			while(myRs.next()) {
-				String u=myRs.getString("username");
-				String p=myRs.getString("password");
-				if(username==u && password==p) valid=true;
+				String u=myRs.getString("username"); //System.out.println(u+" "+username);
+				String p=myRs.getString("password"); //System.out.println(p+" "+password);
+				if(username.equals(u) && password.equals(p)) valid=true;
 			}
 		}
 		finally {
@@ -49,6 +49,7 @@ public class UserAccountDBUtil {
 			String sql= "SELECT * FROM user WHERE username='"+username+"'"
 					+ "AND password='"+password+"';";
 			myRs = myStmt.executeQuery(sql);
+			myRs.next();
 			role=myRs.getString("role");		
 		}
 		finally {
