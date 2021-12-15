@@ -3,8 +3,10 @@ package MainPackage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,8 @@ public class MainServlet extends HttpServlet {
 	@Resource(name="jdbc/projectdb")
 	private DataSource dataSource;
 	
+	private int tries=5;
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -31,9 +35,12 @@ public class MainServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/plain");
-		//out.println("This is the Login Screen");
-		request.getRequestDispatcher("/login.jsp").forward(request,
-				response);
+		if(tries<=0) {
+			request.getRequestDispatcher("/blocked.jsp").forward(request,response);
+		}
+		else {
+			request.getRequestDispatcher("/login.jsp").forward(request,response);
+		}
 	}
 
 	
@@ -41,20 +48,39 @@ public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username=req.getParameter("Username");
 		String password=req.getParameter("Password");
+		req.getSession().setAttribute("Tries", tries);
 		try {
 			boolean valid=userAccountDBUtil.ValidCredentials(username, password);
+			//System.out.println(valid);
 			if(valid==true) {
+				System.out.println("true");
 				String role=userAccountDBUtil.GetRole(username, password);
-				if(role=="student") {
+				//System.out.println(role);
+				if(role.equals("student")) {
 					//goto Student's page
-					req.getRequestDispatcher("/list-todo.jsp").forward(req,
-							resp);
+					tries=5; req.getSession().setAttribute("Tries", tries);
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet2"); //works
+					req.getSession().setAttribute("user", username);
+
 				}
-				else if(role=="teacher") {
+				else if(role.equals("teacher")) {
 					//goto Teacher's page
-					req.getRequestDispatcher("/list-todo.jsp").forward(req,
-							resp);
+					//System.out.println("Teacher page");
+					tries=5; req.getSession().setAttribute("Tries", tries);
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet");
+					req.getSession().setAttribute("user", username);
 				}
+			}
+			else {
+				//System.out.println("Wrong Credentials");
+				tries--; req.getSession().setAttribute("Tries", tries);
+				if(tries<=0) {
+					req.getRequestDispatcher("/blocked.jsp").forward(req,resp);
+				}
+				else {
+					req.getRequestDispatcher("/login2.jsp").forward(req,resp);
+				}
+				//resp.setIntHeader("Refresh", 1);//Refresh the page
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,15 +89,12 @@ public class MainServlet extends HttpServlet {
 		
 	}
 
-
-
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		//System.out.println("init successful");
 		userAccountDBUtil = new UserAccountDBUtil(dataSource);
 	}
-	
 	
 
 }
