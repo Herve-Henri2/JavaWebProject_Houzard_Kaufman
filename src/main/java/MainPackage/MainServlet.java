@@ -52,7 +52,7 @@ public class MainServlet extends HttpServlet {
 				//System.out.println(role);
 				if(role.equals("student")) {
 					//goto Student's page
-					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet"); //works
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet2"); //works
 				}
 				else if(role.equals("teacher")) {
 					//goto Teacher's page
@@ -61,7 +61,8 @@ public class MainServlet extends HttpServlet {
 				}
 			}
 			else {
-				System.out.println("Nothing for now");
+				System.out.println("Wrong Credentials");
+				resp.setIntHeader("Refresh", 1);//Refresh
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +76,6 @@ public class MainServlet extends HttpServlet {
 		super.init();
 		//System.out.println("init successful");
 		userAccountDBUtil = new UserAccountDBUtil(dataSource);
-		todoDBUtil = new TodoDBUtil(dataSource);
 	}
 	
 
