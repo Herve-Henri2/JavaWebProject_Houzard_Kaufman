@@ -7,9 +7,11 @@
 <body>
 	<!-- ${TODO_LIST}-->
 	<div class="red_band">
-	    <h4 class="maintext">List of things to do</h4>
-	    <img src="esilv_250.jpg" alt="Esilv_logo" width="80" height="80"
-	    style="margin-left:840px">
+		<div>
+			<h1 class="welcome">Welcome ${sessionScope.user }</h1>
+	    	<h4 class="maintext">List of things to do</h4>
+		</div>
+	    <img id="logo" src="esilv_250.jpg" alt="Esilv_logo" width="80" height="80">
 	</div>
 	<div id="container">
 		<div id="content">

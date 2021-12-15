@@ -10,11 +10,18 @@ body{
 	padding:20px;
 }
 
+.welcome{
+	margin: 20px 50px 20px 50px;
+  	font-family:Verdana, Arial, Helvetica, sans-serif;
+  	white-space: nowrap;
+  	color: #FFFFFF;
+}
+
 .maintext {
-  margin: 20px 50px 20px 50px;
-  font-family:Verdana, Arial, Helvetica, sans-serif;
-  white-space: nowrap;
-  color: #FFFFFF;
+  	margin: 20px 50px 20px 50px;
+  	font-family:Verdana, Arial, Helvetica, sans-serif;
+  	white-space: nowrap;
+  	color: #FFFFFF;
 }
 
 table {   
@@ -52,4 +59,9 @@ td{
 
 #logout{
 	margin: 20px 20px 20px 20px;
+}
+
+#logo{
+	position: relative;
+	left: 500px;
 }

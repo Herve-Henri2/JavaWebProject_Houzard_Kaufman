@@ -26,6 +26,8 @@ public class MainServlet extends HttpServlet {
 	@Resource(name="jdbc/projectdb")
 	private DataSource dataSource;
 	
+	private int tries=5;
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -33,9 +35,12 @@ public class MainServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/plain");
-		//out.println("This is the Login Screen");
-		request.getRequestDispatcher("/login.jsp").forward(request,
-				response);
+		if(tries<=0) {
+			request.getRequestDispatcher("/blocked.jsp").forward(request,response);
+		}
+		else {
+			request.getRequestDispatcher("/login.jsp").forward(request,response);
+		}
 	}
 
 	
@@ -43,6 +48,7 @@ public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username=req.getParameter("Username");
 		String password=req.getParameter("Password");
+		req.getSession().setAttribute("Tries", tries);
 		try {
 			boolean valid=userAccountDBUtil.ValidCredentials(username, password);
 			//System.out.println(valid);
@@ -52,17 +58,29 @@ public class MainServlet extends HttpServlet {
 				//System.out.println(role);
 				if(role.equals("student")) {
 					//goto Student's page
+					tries=5; req.getSession().setAttribute("Tries", tries);
 					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet2"); //works
+					req.getSession().setAttribute("user", username);
+
 				}
 				else if(role.equals("teacher")) {
 					//goto Teacher's page
 					//System.out.println("Teacher page");
+					tries=5; req.getSession().setAttribute("Tries", tries);
 					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet");
+					req.getSession().setAttribute("user", username);
 				}
 			}
 			else {
-				System.out.println("Wrong Credentials");
-				resp.setIntHeader("Refresh", 1);//Refresh
+				//System.out.println("Wrong Credentials");
+				tries--; req.getSession().setAttribute("Tries", tries);
+				if(tries<=0) {
+					req.getRequestDispatcher("/blocked.jsp").forward(req,resp);
+				}
+				else {
+					req.getRequestDispatcher("/login2.jsp").forward(req,resp);
+				}
+				//resp.setIntHeader("Refresh", 1);//Refresh the page
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

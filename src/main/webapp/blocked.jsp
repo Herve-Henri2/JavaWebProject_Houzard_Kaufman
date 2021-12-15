@@ -14,19 +14,7 @@
 	    <img id="logo" src="esilv_250.jpg" alt="Esilv_logo" width="80" height="80">
 	</div>
     <div id="wrapper">
-		<form action="http://localhost:5553/WebProject/MainServlet" method="post">
-			<div class="container1">
-				<label for="username">Username</label> 
-				<input id="username" name="Username" type="text">
-			</div>
-			<div class="container2">
-				<label for="password">Password</label> 
-				<input id="password" name="Password" type="password">
-			</div>
-			<div class="container3">
-				<input type="submit" id="confirm" value="Confirm"></input>
-			</div>
-		</form>
+    	<h1 id="blocked">You have been blocked for too many wrong attempts.</h1>
 	</div>
 </body>
 </html>

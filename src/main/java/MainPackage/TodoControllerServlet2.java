@@ -29,6 +29,7 @@ public class TodoControllerServlet2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
+			request.getSession().getAttribute("user");
 			listTodos(request,response);
 			} catch (Exception e) {
 
