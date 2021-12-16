@@ -40,21 +40,20 @@ public class TodoControllerServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String text = request.getParameter("newTodoText");
+        String number = request.getParameter("deleteNumber");
 	    try {
-            String action = request.getParameter("purpose");
-            if(action.equals("add"))
+            if(text!=null)
             {
-            	String text = request.getParameter("newTodoText");
             	
             	todoDBUtil.addTodos(changeString(text));
             	todoDBUtil.ResetIds();
         		response.setIntHeader("Refresh", 1);
             }
-            if(action.equals("delete"))
+            else if(number!=null && number!="")
             {
-            	int number = Integer.parseInt(request.getParameter("deleteNumber"));
-            	todoDBUtil.deleteTodos(number);
+            	int num = Integer.parseInt(number);
+            	todoDBUtil.deleteTodos(num);
     			todoDBUtil.ResetIds();
     			response.setIntHeader("Refresh", 1);
             }

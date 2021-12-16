@@ -26,22 +26,18 @@
 						<td>${tempTodo.getDescription()}</td>
 				</c:forEach>
 			</table>
-			<form action="http://localhost:9003/WebProject/MainServlet" method="get">
+			<form action="http://localhost:5553/WebProject/MainServlet" method="get">
 				<button  id="logout" type="submit">Logout</button>
 			</form>
 		</div>	
-	    <form action="http://localhost:9003/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
-	        <input type="hidden" name="purpose" value="delete">
+	    <form action="http://localhost:5553/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
 	        <input name="deleteNumber" size="12" placeholder="Todo number">
 	        <input type="submit" value="Delete" style = "position:relative; left:4px;">
-	    </form>    
-	    
-   	    <form action="http://localhost:9003/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
-	        <input type="hidden" name="purpose" value="add">
-	        <input name="newTodoText" type="text" size="24" placeholder="Todo Text">
+	    </form>    	    
+   	    <form action="http://localhost:5553/WebProject/TodoControllerServlet" method="post" style = "position:relative; left:0px; top:30px;">
+	        <input id="newTodoText" name="newTodoText" type="text" placeholder="Todo Text">
 	        <input type="submit" value="Ajouter" style = "position:relative; left:4px;">
-	    </form> 
-	    
+	    </form>     
 	</div>
 </body>
 </html>

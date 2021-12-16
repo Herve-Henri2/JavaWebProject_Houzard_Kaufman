@@ -65,3 +65,7 @@ td{
 	position: relative;
 	left: 500px;
 }
+
+#newTodoText{
+	size: 50;
+}
