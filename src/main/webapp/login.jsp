@@ -17,7 +17,7 @@
 		<form action="http://localhost:5553/WebProject/MainServlet" method="post">
 			<div class="container1">
 				<label for="username">Username</label> 
-				<input id="username" name="Username" type="text">
+				<input id="username" name="Username" type="text" value="${username}">
 			</div>
 			<div class="container2">
 				<label for="password">Password</label> 

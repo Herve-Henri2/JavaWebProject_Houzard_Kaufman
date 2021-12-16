@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,6 +40,13 @@ public class MainServlet extends HttpServlet {
 			request.getRequestDispatcher("/blocked.jsp").forward(request,response);
 		}
 		else {
+			Cookie [] cookies=request.getCookies();
+			if(cookies!= null){
+				for(Cookie cookie:cookies){
+				if(cookie.getName().equals("username"))
+					request.setAttribute("username", cookie.getValue()) ;
+				}
+			}
 			request.getRequestDispatcher("/login.jsp").forward(request,response);
 		}
 	}
@@ -53,8 +61,10 @@ public class MainServlet extends HttpServlet {
 			boolean valid=userAccountDBUtil.ValidCredentials(username, password);
 			//System.out.println(valid);
 			if(valid==true) {
-				System.out.println("true");
+				//System.out.println("true");
 				String role=userAccountDBUtil.GetRole(username, password);
+				Cookie cookie=new Cookie("username", username);
+				resp.addCookie(cookie);
 				//System.out.println(role);
 				if(role.equals("student")) {
 					//goto Student's page
