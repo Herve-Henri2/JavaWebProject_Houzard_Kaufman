@@ -2,6 +2,7 @@ package MainPackage;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +65,7 @@ public class TodoDBUtil
 		String sql= "delete from todo where id = "+ id+";";
 		int myRs = myStmt.executeUpdate(sql);
 		System.out.println("data deleted");
+		//System.out.println("max id : "+ maxID());
 		} 
 		finally
 			{
@@ -71,9 +73,58 @@ public class TodoDBUtil
 			}
 		}
 	
+	public void addTodos(String text) throws Exception
+	{
+		int id = maxID()+1;
+		Connection myConn=null;
+		Statement myStmt = null;
+		
+		try 
+		{
+		myConn = dataSource.getConnection();
+		myStmt= myConn.createStatement();
+		String sql= "insert into todo value("+id+", '"+text+"');";
+		
+		
+		int myRs = myStmt.executeUpdate(sql);
+		System.out.println("data added");
+		} 
+		finally
+			{
+			close2(myConn,myStmt);
+			}
+	}
+	
+	public int maxID() throws Exception
+	{
+		int maxID = -1;
+		Connection myConn=null;
+		Statement myStmt = null;
+		ResultSet myRs= null;
+		try 
+		{
+		myConn = dataSource.getConnection();
+		myStmt= myConn.createStatement();
+		String sql= "select max(id) from todo;";
+		myRs = myStmt.executeQuery(sql);
+		myRs.next();
+		
+		maxID = myRs.getInt("max(id)");
+		System.out.println("Max id : " + maxID);
+		return maxID;
+		} 
+		finally
+			{
+			close(myConn,myStmt,myRs);
+			}
+	
+	}
+	
+	
 	public void ResetIds() throws Exception{
 		Connection myConn=null;
-		Statement myStmt = null; Statement myStmt2=null;
+		Statement myStmt = null; 
+		Statement myStmt2=null;
 		ResultSet myRs=null;
 		try {
 			int id=0;
