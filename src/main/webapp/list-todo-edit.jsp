@@ -21,20 +21,11 @@
 					<th>id</th>
 					<th>description</th>
 				</tr>
-				
-				
-				
 				<c:forEach var="tempTodo" items="${TODO_LIST }">
-				
-					<c:url var="EditLink" value= "EditTodoServlet">
-					<c:param name="todoID" value="${tempTodo.getId()}"/>
-					</c:url>
-				
-						<tr>
-							<td>${tempTodo.getId()}</td>
-							<td>${tempTodo.getDescription()}</td>
-							<td><a href="${EditLink }"> Edit</a></td>
-						</tr>
+					<tr>
+						<td>${tempTodo.getId()}</td>
+						<td>${tempTodo.getDescription()}</td>
+						
 						
 				</c:forEach>
 			</table>
@@ -43,17 +34,21 @@
 				<button id="logout" type="submit">Logout</button>
 			</form>
 		</div>
-		<form action="http://localhost:9003/WebProject/TodoControllerServlet"
+		
+		<form action="http://localhost:9003/WebProject/EditTodoServlet"
 			method="post" style="position: relative; left: 0px; top: 30px;">
-			<input name="deleteNumber" size="10" placeholder="Todo number">
-			<input type="submit" value="Delete"	style="position: relative; left: 4px;">
+			
+			<input id="editTodoText" size="60"name="editTodoText" type="text" value="${Todo.getDescription()}"> 
+			<input type="submit" value="Save" style="position: relative; left: 4px;">
 		</form>
-		<form action="http://localhost:9003/WebProject/TodoControllerServlet"
+		
+		<form action="http://localhost:9003/WebProject/EditTodoServlet"
 			method="post" style="position: relative; left: 0px; top: 30px;">
-			<input id="newTodoText" size="60" name="newTodoText" type="text" placeholder="Todo Text"> 
-			<input type="submit" value="Add" style="position: relative; left: 4px;">
-		</form>
+			
 
+			<input type="submit" name = "but" value="Annuler" style="position: relative; left: 4px;">				
+		
+		</form>
 		
 
 

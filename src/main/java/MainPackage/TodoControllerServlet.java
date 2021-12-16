@@ -28,8 +28,12 @@ public class TodoControllerServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			//int id = Integer.parseInt(request.getParameter("id"));
+			
 			request.getSession().getAttribute("user");
 			listTodos(request,response);
+			
 			} catch (Exception e) {
 
 			e.printStackTrace();
@@ -43,7 +47,7 @@ public class TodoControllerServlet extends HttpServlet {
         String text = request.getParameter("newTodoText");
         String number = request.getParameter("deleteNumber");
 	    try {
-            if(text!=null)
+            if(text!=null && text!="" )
             {
             	
             	todoDBUtil.addTodos(changeString(text));

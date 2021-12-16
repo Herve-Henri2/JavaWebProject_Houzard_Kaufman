@@ -95,6 +95,27 @@ public class TodoDBUtil
 			}
 	}
 	
+	public void updateTodos(int id, String text) throws Exception
+	{
+		Connection myConn=null;
+		Statement myStmt = null;
+		
+		try 
+		{
+		myConn = dataSource.getConnection();
+		myStmt= myConn.createStatement();
+		String sql= "update todo set description = '"+text+"' where id = "+id+";";
+		
+		int myRs = myStmt.executeUpdate(sql);
+		System.out.println("data modified");
+		} 
+		finally
+			{
+			close2(myConn,myStmt);
+			}
+	}
+	
+	
 	public int maxID() throws Exception
 	{
 		int maxID = -1;
@@ -120,6 +141,31 @@ public class TodoDBUtil
 	
 	}
 	
+	public Todo loadTodo(int id) throws Exception
+	{
+		Connection myConn=null;
+		Statement myStmt = null;
+		ResultSet myRs= null;
+		
+		try {
+		myConn = dataSource.getConnection();
+		myStmt= myConn.createStatement();
+		String sql= "select * from todo where id="+id;
+		myRs = myStmt.executeQuery(sql);
+		myRs.next();
+		String description=myRs.getString("description");
+		Todo todo = new Todo(id,description);
+		
+		return todo;
+		
+		}catch(Exception e){
+		System.out.println(e.getMessage());
+		return null;
+		} finally{
+		close(myConn,myStmt,myRs);
+		}
+
+	}
 	
 	public void ResetIds() throws Exception{
 		Connection myConn=null;
@@ -162,9 +208,6 @@ public class TodoDBUtil
 				System.out.println(e.getMessage());
 			}
 		}
-	
-	
-	
 	
 	private void close2(Connection myConn, Statement myStmt) 
 	{

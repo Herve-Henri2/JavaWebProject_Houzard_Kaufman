@@ -6,8 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-jdbc.jar">
+	<classpathentry kind="lib" path="C:/Tomcat/lib/tomcat-jdbc.jar">
 		<attributes>
+			<attribute name="javadoc_location" value="https://tomcat.apache.org/tomcat-9.0-doc/api/"/>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>

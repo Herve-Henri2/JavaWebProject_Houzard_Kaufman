@@ -26,7 +26,7 @@
 						<td>${tempTodo.getDescription()}</td>
 				</c:forEach>
 			</table>
-			<form action="http://localhost:5553/WebProject/MainServlet" method="get">
+			<form action="http://localhost:9003/WebProject/MainServlet" method="get">
 				<button  id="logout" type="submit">Logout</button>
 			</form>
 		</div>	   
