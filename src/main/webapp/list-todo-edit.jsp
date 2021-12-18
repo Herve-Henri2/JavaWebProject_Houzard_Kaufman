@@ -29,20 +29,20 @@
 						
 				</c:forEach>
 			</table>
-			<form action="http://localhost:9003/WebProject/MainServlet"
+			<form action="http://localhost:5553/WebProject/MainServlet"
 				method="get">
 				<button id="logout" type="submit">Logout</button>
 			</form>
 		</div>
 		
-		<form action="http://localhost:9003/WebProject/EditTodoServlet"
+		<form action="http://localhost:5553/WebProject/EditTodoServlet"
 			method="post" style="position: relative; left: 0px; top: 30px;">
 			
 			<input id="editTodoText" size="60"name="editTodoText" type="text" value="${Todo.getDescription()}"> 
 			<input type="submit" value="Save" style="position: relative; left: 4px;">
 		</form>
 		
-		<form action="http://localhost:9003/WebProject/EditTodoServlet"
+		<form action="http://localhost:5553/WebProject/EditTodoServlet"
 			method="post" style="position: relative; left: 0px; top: 30px;">
 			
 

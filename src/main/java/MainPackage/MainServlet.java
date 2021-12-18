@@ -69,7 +69,7 @@ public class MainServlet extends HttpServlet {
 				if(role.equals("student")) {
 					//goto Student's page
 					tries=5; req.getSession().setAttribute("Tries", tries);
-					resp.sendRedirect("http://localhost:9003/WebProject/TodoControllerServlet2"); //works
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet2"); //works
 					req.getSession().setAttribute("user", username);
 
 				}
@@ -77,7 +77,7 @@ public class MainServlet extends HttpServlet {
 					//goto Teacher's page
 					//System.out.println("Teacher page");
 					tries=5; req.getSession().setAttribute("Tries", tries);
-					resp.sendRedirect("http://localhost:9003/WebProject/TodoControllerServlet");
+					resp.sendRedirect("http://localhost:5553/WebProject/TodoControllerServlet");
 					req.getSession().setAttribute("user", username);
 				}
 			}

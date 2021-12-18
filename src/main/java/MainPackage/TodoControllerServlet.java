@@ -54,7 +54,7 @@ public class TodoControllerServlet extends HttpServlet {
             	todoDBUtil.ResetIds();
         		response.setIntHeader("Refresh", 1);
             }
-            else if(number!=null && number!="")
+            else if(number!=null && number!="" && isNumber(number))
             {
             	int num = Integer.parseInt(number);
             	todoDBUtil.deleteTodos(num);
@@ -89,12 +89,24 @@ public class TodoControllerServlet extends HttpServlet {
 		return result;
 	}
 
-
+	public static boolean isNumber(String string) {
+		boolean b=false;
+		try {
+			Integer.parseInt(string);
+			b=true;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+	}
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		System.out.println("init successful");
 		todoDBUtil = new TodoDBUtil(dataSource);
 	}
+	
 
 }
